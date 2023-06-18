@@ -423,6 +423,7 @@ d3.csv("data/insurance.csv").then(function (data) {
           else if (bmiData.bmiCategory == "normal") tempO = 0.2;
           else tempO = 0.05;
           const rectHeight = (tempH * bmiData.count) / tempC;
+          var clicked = 0;
 
           mosaicSvg
             .append("rect")
@@ -466,17 +467,33 @@ d3.csv("data/insurance.csv").then(function (data) {
             })
             .on("click", (event) => {
               // 클릭한 사각형에 저장된 datum 객체를 사용합니다.
-              scatterPlot.selectAll("circle").style("fill", (circle) => {
-                if (
-                  circle.sex === sexData.sex &&
-                  circle.smoker === smokerData.smoker &&
-                  circle.bmiCategory === bmiData.bmiCategory
-                ) {
-                  return "red";
-                } else {
-                  return "gray";
-                }
-              });
+              if (clicked == 0) {
+                scatterPlot.selectAll("circle").style("fill", (circle) => {
+                  if (
+                    circle.sex === sexData.sex &&
+                    circle.smoker === smokerData.smoker &&
+                    circle.bmiCategory === bmiData.bmiCategory
+                  ) {
+                    return "red";
+                  } else {
+                    return "gray";
+                  }
+                });
+                clicked = 1;
+              } else {
+                scatterPlot.selectAll("circle").style("fill", (circle) => {
+                  if (
+                    circle.sex === sexData.sex &&
+                    circle.smoker === smokerData.smoker &&
+                    circle.bmiCategory === bmiData.bmiCategory
+                  ) {
+                    return "steelblue";
+                  } else {
+                    return "steelblue";
+                  }
+                });
+                clicked = 0;
+              }
             });
 
           yOffset += rectHeight;
