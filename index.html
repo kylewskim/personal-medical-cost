@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personal Medical Cost</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      #title-bar {
+        height: 50px;
+        background-color: #f8f8f8;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-bottom: 1px solid #ccc; /* add a bottom border */
+      }
+
+      #title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      #content {
+        display: flex;
+        height: calc(100vh - 50px);
+      }
+
+      #first-section {
+        width: calc(25%);
+        height: 100%;
+        background-color: #f8f8f8;
+        padding: 0 20px;
+        border-right: 1px solid #ccc; /* add a right border */
+      }
+
+      #second-section {
+        width: calc(50%);
+        height: 100%;
+        background-color: #f8f8f8;
+        padding: 20px;
+        box-sizing: border-box;
+        border-right: 1px solid #ccc; /* add a right border */
+      }
+
+      #scatter-plot {
+        width: 100%;
+        height: 80%;
+        border: 1px solid #ccc;
+      }
+
+      #slider {
+        width: 100%;
+        /* height: 20%; */
+      }
+
+      #third-section {
+        width: calc(25%);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #f8f8f8;
+      }
+
+      #mosaic-plot {
+        width: 100%;
+        max-width: 300px; /* Set a maximum width, if needed */
+      }
+
+      /* #mosaic-plot svg {
+        width: 100%;
+        height: 100%;
+      } */
+
+      .row {
+        /* height: 50%; */
+        /* display: flex; */
+        align-items: center;
+        justify-content: center;
+        /* padding: 20px; */
+        flex: 1;
+        box-sizing: border-box;
+      }
+
+      .divider {
+        border-bottom: 1px solid #ccc;
+        /* add a bottom border */
+      }
+
+      .legend {
+        font-size: 10pt;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="title-bar">
+      <button onclick="location.reload();">Home</button>
+      <!-- <div id="title">Insurance Forecast</div> -->
+    </div>
+    <div id="content">
+      <div id="first-section">
+        <h3>
+          Personal Medical Cost Visualization <br />
+          by Insurance Forecast
+        </h3>
+        <p>
+          This project visualizes a Kaggle dataset on health insurance costs,
+          exploring factors like demographics and habits. The interactive
+          visualizations help users understand trends and patterns, potentially
+          guiding their insurance policy decisions. By analyzing factors such as
+          age, sex, BMI, children, region, and smoking habits, stakeholders can
+          identify areas for intervention and policy changes. This analysis aims
+          to aid decision-making and promote more effective insurance policies.
+        </p>
+      </div>
+      <div id="second-section">
+        <h4 style="margin-top: 0px">Scatter plot</h4>
+        <div id="scatter-plot"></div>
+        <div id="slider"></div>
+      </div>
+      <div id="third-section">
+        <div class="row">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+            "
+          >
+          <div style="display: flex; flex-direction: column; position: initial; box-sizing: border-box; padding: 20px;" >
+            <h4 style="margin-top: 0px">Mosaic Plot</h4>
+              <div style="display: flex; width: 100%; flex-direction: row; margin-bottom: 4px"> 
+                <div style="height: 16px; width: 20px;"></div>
+                <span class="legend" style="flex:1">Female</span>
+                <span class="legend">Male</span>
+              </div>
+              <div style="display:flex; flex-direction: row;">
+              <div style="display: flex; flex-direction: row;
+              
+              writing-mode: vertical-lr;
+              transform: rotate(-180deg);
+              margin-right: 4px;
+              ">
+                <span class="legend" style="flex:1;">Smoker</span>
+                <span class="legend">Non-Smoker</span>
+              </div>
+              <div style="display: flex; flex-direction: column; position: relative;">
+                <div id="mosaic-plot" style="flex: 1"> </div>
+              </div>
+            </div>
+            <div id="mosaic-tooltip" style="position: absolute; opacity: 0"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="row" style="padding: 20px">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              width: 100%;
+            "
+          >
+            <h4 style="margin: 0px">Violin Plot</h4>
+            <div id="violin-plot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
